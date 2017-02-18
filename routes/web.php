@@ -14,7 +14,10 @@ use App\Task;
 // for step 10 Layouts and Structure
 
 Route::get('/', 'PostsController@index');
+Route::get('/posts/create', 'PostsController@create');
+Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
+
 
 //below from earlier series
 
