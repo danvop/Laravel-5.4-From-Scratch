@@ -21,7 +21,7 @@ class SessionsController extends Controller
     
         if (! auth()->attempt(request(['email', 'password']))) {
             // dd(request(['email', 'password']));
-            dd(auth()->attempt(request(['email', 'password'])));
+            // dd(auth()->attempt(request(['email', 'password'])));
             return back()->withErrors([
                 'message' => 'Please check your credentials and try again.'
                 ]);
