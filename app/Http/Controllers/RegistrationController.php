@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Mail\Welcome;
 
 class RegistrationController extends Controller
 {
@@ -20,7 +21,7 @@ class RegistrationController extends Controller
             'password' => 'required|confirmed'
             ]);
         //create and save the user
-        // $user = User::create(request(['name', 'email', 'password']));
+        //$user = User::create(request(['name', 'email', 'password']));
         $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
@@ -28,6 +29,8 @@ class RegistrationController extends Controller
         ]);
         //sign theim in
         auth()->login($user);
+
+        \Mail::to($user)->send(new Welcome($user));
         //redirect to home page
         return redirect()->home();
     }
