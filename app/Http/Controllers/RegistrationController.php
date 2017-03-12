@@ -13,9 +13,8 @@ class RegistrationController extends Controller
     public function store(RegistrationForm $form)
     {
         $form->persist();
-        //validate the form
-
-        //create and save the user
+        
+        session()->flash('message', 'Thanks so much for signing up!');
         
         return redirect()->home();
     }
